@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.contacts{
+    margin-top: 75px;
+    padding: 25px;
+    background-color: #cacbcd;
+    width: 100%;
+    border-radius: 15px;
+    text-align: center;
+}
