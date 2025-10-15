@@ -1,9 +1,9 @@
 import AddContact from "../components/AddContact.jsx"
 
-function AddContactPage() {
+function AddContactPage({contact, setContact, contacts, setContacts}) {
   return (
     <>
-      <AddContact />
+      <AddContact contacts={contacts} setContacts={setContacts} contact={contact} setContact={setContact} />
     </>
   )
 }

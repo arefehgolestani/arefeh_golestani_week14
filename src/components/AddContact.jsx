@@ -2,17 +2,12 @@ import {Link } from "react-router-dom"
 import styles from "./AddContact.module.css"
 import inputs from "../constants/inputs.js"
 import { useState } from "react"
-import { v4 } from 'uuid';
+import { v4 } from 'uuid'
+import { ImAddressBook } from "react-icons/im";
 
-function AddContact() {
-    const [contacts, setContacts] = useState([]);
-    const [contact, setContact] = useState({
-        id: "",
-        name: "",
-        email: "",
-        job: "",
-        phone: "",
-    });
+function AddContact({contact, setContact, contacts, setContacts}) {
+    
+    
     const changeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -22,12 +17,12 @@ function AddContact() {
     const addHandler = () => {
         const newContact = {...contact , id: v4()};
         setContacts(contacts => ([...contacts, newContact]));
-       setContact({
+        setContact({
          name: "",
          email: "",
          job: "",
          phone: "",
-       })
+        });
     }
     
   return (
@@ -36,7 +31,7 @@ function AddContact() {
          <div className={styles.header}>
            <h3>اضافه کردن مخاطب</h3>
            <button>
-             <Link to="/">مخاطبین</Link>
+             <Link to="/"><ImAddressBook color="#8dae95" fontSize="1.1rem" /></Link>
            </button>
          </div>
          <div className={styles.inputs_container}>

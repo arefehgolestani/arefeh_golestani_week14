@@ -1,0 +1,14 @@
+.contacts_item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 5px;
+}
+.contacts_item button{
+    border: none;
+    margin: 0 5px;
+    padding: 5px;
+}

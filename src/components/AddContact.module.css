@@ -11,8 +11,21 @@
     width: 100%;
     margin-bottom: 75px;
 }
+.header button{
+    border: none;
+    padding: 7px;
+    margin: 0 7px;
+    width: 40px;
+    height: 40px;
+    line-height: 37px;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+}
+.header button:hover{
+   transform: scale(1.2);
+}
 .inputs_container{
-    background-color: #aab1b9;
+    background-color: #bfc5cb;
     width: 80%;
     padding: 25px;
     border-radius: 15px;

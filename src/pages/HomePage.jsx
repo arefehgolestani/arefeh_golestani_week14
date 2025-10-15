@@ -1,9 +1,9 @@
 import Contacts from "../components/Contacts.jsx"
 
-function HomePage() {
+function HomePage({contacts, deleteHandler}) {
   return (
     <>
-      <Contacts />  
+      <Contacts contacts={contacts} deleteHandler={deleteHandler} />  
     </>
   )
 }

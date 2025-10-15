@@ -16,13 +16,14 @@ body, html{
   font-family: 'Yekan';
   direction: rtl;
   text-align: right;
+  color: #747070;
 }
 
 body {
   max-width: 1000px;
   padding: 25px;
   margin: auto;
-  background-color: #d3cdcf;
+  background-color: #dddddd;
 }
 *{
   padding: 0;
