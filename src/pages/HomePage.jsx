@@ -6,7 +6,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import styles from "./HomePage.module.css"
 import Alert from '../components/Alert'
 
-function HomePage({contacts, deleteHandler, setModal, alert, setAlert}) {
+function HomePage({contacts, deleteHandler, setModal, alert, setAlert, editHandler}) {
   return (
     <>
       <div className={styles.container}>
@@ -35,7 +35,7 @@ function HomePage({contacts, deleteHandler, setModal, alert, setAlert}) {
            {contacts.length ? (
               <ul className={styles.contacts_list}>
                 {contacts.map((contact) => (
-                   <ContactItem key={contact.id} data={contact} setModal={setModal} deleteHandler={deleteHandler} />
+                   <ContactItem key={contact.id} data={contact} setModal={setModal} deleteHandler={deleteHandler} editHandler={editHandler} />
                 ))}
                </ul>
            ) : ( <p>در حال حاضر هیچ موردی وجود ندارد!</p>)}

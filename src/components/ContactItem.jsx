@@ -2,7 +2,7 @@ import styles from "./ContactItem.module.css"
 import Modal from "../components/Modal";
 
 
-function ContactItem({ deleteHandler, data : {id, name, email, phone}, modal, setModal}) {
+function ContactItem({ deleteHandler, editHandler, data : {id, name, email, phone}, modal, setModal}) {
   
   const openDeleteModal = () => {
     setModal({
@@ -20,7 +20,7 @@ function ContactItem({ deleteHandler, data : {id, name, email, phone}, modal, se
         <p>{email}</p>
         <p>{phone}</p>
         <p>
-            <button className="warning">ویرایش</button>
+            <button className="warning" onClick={() => editHandler(id)}>ویرایش</button>
             <button className="danger" onClick={openDeleteModal}>حذف</button>
         </p>
         {modal && (
