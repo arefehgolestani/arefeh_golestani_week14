@@ -1,15 +1,38 @@
 import styles from "./ContactItem.module.css"
+import Modal from "../components/Modal";
 
-function ContactItem({ deleteHandler, data : {id, name, email, phone}}) {
+
+function ContactItem({ deleteHandler, data : {id, name, email, phone}, modal, setModal}) {
+  
+  const openDeleteModal = () => {
+    setModal({
+      title: "حذف مخاطب",
+      message: "آیا از حذف این مخاطب اطمینان دارید؟",
+      confirmText: "حذف",
+      cancelText: "انصراف",
+      onConfirm: () => deleteHandler(id),
+    });
+  };
+ 
   return (
     <li className={styles.contacts_item} key={id}>
         <p>{name}</p>
         <p>{email}</p>
         <p>{phone}</p>
         <p>
-            <button>ویرایش</button>
-            <button onClick={() => deleteHandler(id)}>حذف</button>
+            <button className="warning">ویرایش</button>
+            <button className="danger" onClick={openDeleteModal}>حذف</button>
         </p>
+        {modal && (
+       <Modal 
+         title={modal.title}
+         message={modal.message}
+         confirmText={modal.confirmText}
+         cancelText={modal.cancelText}
+         onConfirm={modal.onConfirm}
+         onCancel={() => setModal(null)}
+       />
+    )}
     </li>
   )
 }

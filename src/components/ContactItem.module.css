@@ -12,3 +12,9 @@
     margin: 0 5px;
     padding: 5px;
 }
+button{
+    padding: 5px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+}

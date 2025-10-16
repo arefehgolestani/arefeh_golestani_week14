@@ -16,7 +16,7 @@ body, html{
   font-family: 'Yekan';
   direction: rtl;
   text-align: right;
-  color: #747070;
+  color: #5f5f5f;
 }
 
 body {
@@ -35,4 +35,22 @@ a{
 }
 a, button{
   font-family: 'Yekan';
+  cursor: pointer;
 }
+input{
+  font-family: 'Yekan';
+  padding: 0 10px;
+}
+.success{
+  background-color: #0a9e0a;
+  color: #fff;
+}
+.warning{
+    background-color: orange;
+    color: #fff;
+}
+.danger{
+  background-color: #e81f1f;
+  color: #fff;
+}
+
