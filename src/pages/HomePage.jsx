@@ -1,12 +1,30 @@
 
 import {Link } from "react-router-dom"
-import ContactItem from "../components/ContactItem.jsx"
 import { ImPlus } from "react-icons/im";
 import { FaTrashAlt } from "react-icons/fa";
+import { useState } from "react";
+
+import ContactItem from "../components/ContactItem.jsx"
 import styles from "./HomePage.module.css"
 import Alert from '../components/Alert'
+import Search from "../components/Search.jsx";
 
-function HomePage({contacts, deleteHandler, setModal, alert, setAlert, editHandler}) {
+
+
+function HomePage({contacts, setModal, alert, setAlert, editHandler, deleteHandler }) {
+const [search, setSearch] = useState("");
+
+
+
+const filteredContacts = search
+  ? contacts.filter((contact) => {
+   return (
+      contact.name?.toLowerCase().includes(search) ||
+      contact.email?.toLowerCase().includes(search)
+    );
+}) : contacts;
+
+
   return (
     <>
       <div className={styles.container}>
@@ -19,10 +37,7 @@ function HomePage({contacts, deleteHandler, setModal, alert, setAlert, editHandl
      )}
         
         <div className={styles.header}>
-            <div>
-               <label>  جستجو در مخاطبین : </label>
-               <input type="text" />
-            </div>
+            <Search search={search} setSearch={setSearch} />
             <div>
                <button><FaTrashAlt color="#8dae95" fontSize="1rem" /></button>
                <button>
@@ -34,7 +49,7 @@ function HomePage({contacts, deleteHandler, setModal, alert, setAlert, editHandl
         <div className={styles.contacts}>
            {contacts.length ? (
               <ul className={styles.contacts_list}>
-                {contacts.map((contact) => (
+                {filteredContacts.map((contact) => (
                    <ContactItem key={contact.id} data={contact} setModal={setModal} deleteHandler={deleteHandler} editHandler={editHandler} />
                 ))}
                </ul>

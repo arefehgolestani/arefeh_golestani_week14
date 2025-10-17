@@ -115,6 +115,10 @@ function AddContactPage({
         <button onClick={openAddModal}>
           {contact.id ? "ویرایش مخاطب" : "افزودن مخاطب"}
         </button>
+        {contact.id &&  (<button> <Link style={{color: "#fff"}} to="/"> بازگشت
+          
+          </Link></button>) }
+       
       </div>
 
       {modal && (

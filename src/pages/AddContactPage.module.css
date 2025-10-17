@@ -48,7 +48,10 @@
     padding: 10px 20px;
     border-radius: 10px;
     width: 100%;
-    margin: 15px auto;
+    margin: 15px auto 5px;
     text-align: center;
     color: #fff;
+}
+.inputs_container button:last-child{
+    margin: 5px auto 15px;
 }
