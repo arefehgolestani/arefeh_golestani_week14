@@ -6,6 +6,14 @@
     padding: 10px;
     border-radius: 8px;
     margin: 10px 5px;
+    height: 50px;
+}
+.contacts_item p{
+    flex-basis: 0;
+    flex-grow: 1;
+}
+.contacts_item input{
+    min-width: 217.5px;
 }
 .contacts_item button{
     border: none;

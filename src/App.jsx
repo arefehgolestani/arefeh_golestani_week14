@@ -29,10 +29,31 @@ function App() {
     });
   };
 
+  const deleteSelectedContacts = (selectedIds) => {
+    setContacts((prevContacts) =>
+      prevContacts.filter((contact) => !selectedIds.includes(contact.id))
+    );
+  };
+
+  // const selectedDeleteHandler = (id) => {
+  //   if (check.done) {
+  //     const newContacts = contacts.filter((contact) => contact.id !== id);
+  //   setContacts(newContacts);
+  //   setModal(null);
+  //   setAlert({
+  //     type: "warning",
+  //     message: "مخاطب حذف شد!",
+  //   });
+  //   }
+  // };
+
+
+
   const editHandler = (id) => {
     const editedContact = contacts.find((contact) => contact.id === id);
     navigate("/add-contact", { state: editedContact });
   };
+  
 
   return (
     <>
@@ -47,6 +68,7 @@ function App() {
               deleteHandler={deleteHandler}
               contacts={contacts}
               setModal={setModal}
+              deleteSelectedContacts={deleteSelectedContacts}
             />
           }
         />
@@ -71,7 +93,7 @@ function App() {
         <Alert
           type={alert.type}
           message={alert.message}
-          duration={alert.duration || 3000}
+          duration={alert.duration || 2000}
           onClose={() => setAlert(null)}
         />
       )}

@@ -1,9 +1,10 @@
-import styles from "./AddContactPage.Module.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import inputs from "../constants/inputs.js";
 import { v4 } from "uuid";
 import { ImAddressBook } from "react-icons/im";
 import { useEffect } from "react";
+
+import styles from "./AddContactPage.Module.css";
+import inputs from "../constants/inputs.js";
 import Modal from "../components/Modal";
 import Alert from "../components/Alert";
 
@@ -20,7 +21,7 @@ function AddContactPage({
   const navigate = useNavigate();
   const location = useLocation();
   const contactToEdit = location.state;
-  
+
   useEffect(() => {
     if (contactToEdit) {
       setContact(contactToEdit);
@@ -115,10 +116,15 @@ function AddContactPage({
         <button onClick={openAddModal}>
           {contact.id ? "ویرایش مخاطب" : "افزودن مخاطب"}
         </button>
-        {contact.id &&  (<button> <Link style={{color: "#fff"}} to="/"> بازگشت
-          
-          </Link></button>) }
-       
+        {contact.id && (
+          <button>
+            {" "}
+            <Link style={{ color: "#fff" }} to="/">
+              {" "}
+              بازگشت
+            </Link>
+          </button>
+        )}
       </div>
 
       {modal && (

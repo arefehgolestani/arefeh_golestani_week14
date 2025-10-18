@@ -1,9 +1,15 @@
-import styles from "./ContactItem.module.css"
+import styles from "./ContactItem.module.css";
 import Modal from "../components/Modal";
 
-
-function ContactItem({ deleteHandler, editHandler, data : {id, name, email, phone}, modal, setModal}) {
-  
+function ContactItem({
+  deleteHandler,
+  editHandler,
+  data: { id, name, email, phone },
+  modal,
+  setModal,
+  deleteButton,
+  toggleSelect
+}) {
   const openDeleteModal = () => {
     setModal({
       title: "حذف مخاطب",
@@ -13,28 +19,40 @@ function ContactItem({ deleteHandler, editHandler, data : {id, name, email, phon
       onConfirm: () => deleteHandler(id),
     });
   };
- 
+
   return (
     <li className={styles.contacts_item} key={id}>
-        <p>{name}</p>
-        <p>{email}</p>
-        <p>{phone}</p>
+      <p>{name}</p>
+      <p>{email}</p>
+      <p>{phone}</p>
+      {!deleteButton ? (
         <p>
-            <button className="warning" onClick={() => editHandler(id)}>ویرایش</button>
-            <button className="danger" onClick={openDeleteModal}>حذف</button>
+          <button className="warning" onClick={() => editHandler(id)}>
+            ویرایش
+          </button>
+          <button className="danger" onClick={openDeleteModal}>
+            حذف
+          </button>
         </p>
-        {modal && (
-       <Modal 
-         title={modal.title}
-         message={modal.message}
-         confirmText={modal.confirmText}
-         cancelText={modal.cancelText}
-         onConfirm={modal.onConfirm}
-         onCancel={() => setModal(null)}
-       />
-    )}
+      ) : (
+        <input
+          type="checkbox"
+          name={id}
+          onChange={() => toggleSelect(id)}
+        />
+      )}
+      {modal && (
+        <Modal
+          title={modal.title}
+          message={modal.message}
+          confirmText={modal.confirmText}
+          cancelText={modal.cancelText}
+          onConfirm={modal.onConfirm}
+          onCancel={() => setModal(null)}
+        />
+      )}
     </li>
-  )
+  );
 }
 
-export default ContactItem
+export default ContactItem;
