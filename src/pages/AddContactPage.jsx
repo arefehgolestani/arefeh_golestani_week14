@@ -50,6 +50,22 @@ function AddContactPage({
       });
       return;
     }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(contact.email)) {
+      setAlert({ type: "error", message: "ایمیل معتبر نیست!" });
+      setModal(null);
+      return;
+    }
+
+    const phonePattern = /^09\d{9}$/;
+    if (!phonePattern.test(contact.phone)) {
+      setAlert({
+        type: "error",
+        message: "شماره تلفن باید ۱۱ رقم و با 09 شروع شود!",
+      });
+      setModal(null);
+      return;
+    }
 
     if (contact.id) {
       const updatedContacts = contacts.map((item) =>

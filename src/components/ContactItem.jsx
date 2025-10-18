@@ -8,7 +8,7 @@ function ContactItem({
   modal,
   setModal,
   deleteButton,
-  toggleSelect
+  toggleSelect,
 }) {
   const openDeleteModal = () => {
     setModal({
@@ -35,11 +35,7 @@ function ContactItem({
           </button>
         </p>
       ) : (
-        <input
-          type="checkbox"
-          name={id}
-          onChange={() => toggleSelect(id)}
-        />
+        <input type="checkbox" name={id} onChange={() => toggleSelect(id)} />
       )}
       {modal && (
         <Modal

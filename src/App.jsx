@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import AddContactPage from "./pages/AddContactPage.jsx";
@@ -8,7 +8,13 @@ import Alert from "./components/Alert.jsx";
 function App() {
   const [alert, setAlert] = useState(null);
   const [modal, setModal] = useState(null);
-  const [contacts, setContacts] = useState([]);
+  // const [contacts, setContacts] = useState([]);
+
+  const [contacts, setContacts] = useState(() => {
+    const saved = localStorage.getItem("contacts");
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const [contact, setContact] = useState({
     id: "",
     name: "",
@@ -16,6 +22,10 @@ function App() {
     job: "",
     phone: "",
   });
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
 
   const navigate = useNavigate();
 
@@ -35,25 +45,10 @@ function App() {
     );
   };
 
-  // const selectedDeleteHandler = (id) => {
-  //   if (check.done) {
-  //     const newContacts = contacts.filter((contact) => contact.id !== id);
-  //   setContacts(newContacts);
-  //   setModal(null);
-  //   setAlert({
-  //     type: "warning",
-  //     message: "مخاطب حذف شد!",
-  //   });
-  //   }
-  // };
-
-
-
   const editHandler = (id) => {
     const editedContact = contacts.find((contact) => contact.id === id);
     navigate("/add-contact", { state: editedContact });
   };
-  
 
   return (
     <>

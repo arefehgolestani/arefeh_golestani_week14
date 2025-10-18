@@ -54,7 +54,7 @@ function HomePage({
       });
     } else {
       setModal({
-        title: "حذف مخاطبین",
+        title: "حذف گروهی مخاطبین",
         message: `آیا از حذف ${selectedContacts.length} مخاطب  اطمینان دارید؟ `,
         confirmText: "حذف",
         cancelText: "انصراف",
