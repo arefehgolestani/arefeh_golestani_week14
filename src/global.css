@@ -53,4 +53,7 @@ input{
   background-color: #e81f1f;
   color: #fff;
 }
+input:focus{
+  outline: 1px dashed #8dae95;
+}
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+
 import HomePage from "./pages/HomePage.jsx";
 import AddContactPage from "./pages/AddContactPage.jsx";
 import Modal from "./components/Modal.jsx";
@@ -8,8 +9,6 @@ import Alert from "./components/Alert.jsx";
 function App() {
   const [alert, setAlert] = useState(null);
   const [modal, setModal] = useState(null);
-  // const [contacts, setContacts] = useState([]);
-
   const [contacts, setContacts] = useState(() => {
     const saved = localStorage.getItem("contacts");
     return saved ? JSON.parse(saved) : [];
